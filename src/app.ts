@@ -10,6 +10,7 @@ class App {
 
     this.middlewares()
     this.routes()
+    this.database()
   }
 
   private middlewares (): void {
@@ -17,9 +18,10 @@ class App {
     this.express.use(cors())
   }
 
-  private routes ():void {
-    this.express.get('/', (req, res) => {
-      return res.send('Hello world')
+  private database ():void {
+    mongoose.connect('mongodb://tsuser:tspass@localhost:27017/tsnode', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     })
   }
 }
