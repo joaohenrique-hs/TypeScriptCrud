@@ -1,5 +1,5 @@
 import { Schema, model, Document } from 'mongoose'
-import uuid from 'uuid/dist/v4'
+import { v4 as uuidv4 } from 'uuid'
 
 interface UserInterface extends Document {
   id?: string,
@@ -12,7 +12,7 @@ interface UserInterface extends Document {
 const UserSchema = new Schema({
   _id: {
     type: String,
-    default: uuid()
+    default: uuidv4()
   },
   name: String,
   age: Number,
