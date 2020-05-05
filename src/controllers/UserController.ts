@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import User from '../schemas/User'
+import User from '../models/User'
 
 class UserController {
   public async index (req: Request, res: Response): Promise<Response> {
