@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  node:
+    image: node:lts-slim
+    ports:
+      - "3000:3000"
+    working_dir: "/home/node/app"
+    volumes:
+      - ./:/home/node/app
+    command: "yarn dev"
+    networks:
+      - app
+
+networks:
+  app:
+    driver: "bridge"
