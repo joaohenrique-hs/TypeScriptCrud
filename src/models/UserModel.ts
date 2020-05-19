@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 interface UserInterface extends Document {
   id?: string,
   name?: string
-  age?: number,
   email?: string,
   password?: string
 }
@@ -15,7 +14,6 @@ const UserSchema = new Schema({
     default: uuidv4()
   },
   name: String,
-  age: Number,
   email: String,
   password: String
 }, {
