@@ -2,6 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import routes from './routes'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 class App {
   public express: express.Application
@@ -20,7 +23,14 @@ class App {
   }
 
   private database ():void {
-    mongoose.connect('mongodb://tsuser:tspass@localhost:27017/tsnode', {
+    const HOST = process.env.MONGO_HOST
+    const PORT = process.env.MONGO_PORT
+
+    const USER = process.env.MONGO_USER
+    const PASSWORD = process.env.MONGO_PASSWORD
+    const DATABASE = process.env.MONGO_DATABASE
+
+    mongoose.connect(`mongodb://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
