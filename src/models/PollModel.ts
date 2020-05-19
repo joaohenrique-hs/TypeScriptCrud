@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from 'uuid'
 interface PollInterface extends Document {
   id: string,
   title: string,
-  opt1: string,
-  votes1: number,
-  opt2: string,
-  votes2: string
+  topic?: string,
+  choices: [{
+    option: string,
+    votes: number
+  }]
 }
 
 const PollSchema = new Schema({
@@ -16,10 +17,11 @@ const PollSchema = new Schema({
     default: uuidv4()
   },
   title: String,
-  opt1: String,
-  votes1: Number,
-  opt2: String,
-  votes2: Number
+  topic: String,
+  choices: [{
+    option: String,
+    votes: Number
+  }]
 }, {
   timestamps: true
 })
