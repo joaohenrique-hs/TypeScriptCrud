@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import mongoose from 'mongoose'
 import routes from './routes'
 import dotenv from 'dotenv'
+import database from './services/MongoService'
 
 dotenv.config()
 
@@ -22,22 +22,12 @@ class App {
     this.express.use(cors())
   }
 
-  private database ():void {
-    const HOST = process.env.MONGO_HOST
-    const PORT = process.env.MONGO_PORT
-
-    const USER = process.env.MONGO_USER
-    const PASSWORD = process.env.MONGO_PASSWORD
-    const DATABASE = process.env.MONGO_DATABASE
-
-    mongoose.connect(`mongodb://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-  }
-
   private routes ():void {
     this.express.use(routes)
+  }
+
+  private database ():void {
+    this.express.use(database)
   }
 }
 
