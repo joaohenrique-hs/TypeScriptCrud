@@ -11,7 +11,7 @@ interface UserInterface extends Document {
 const UserSchema = new Schema({
   _id: {
     type: String,
-    default: uuidv4()
+    default: uuidv4
   },
   name: String,
   email: String,
