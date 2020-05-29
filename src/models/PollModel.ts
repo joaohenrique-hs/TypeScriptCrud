@@ -1,15 +1,6 @@
-import { Schema, model, Document } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
-
-interface PollInterface extends Document {
-  id: string,
-  title: string,
-  topic?: string,
-  choices: [{
-    option: string,
-    votes: number
-  }]
-}
+import PollInterface from '../interfaces/PollINterface'
 
 const PollSchema = new Schema({
   _id: {

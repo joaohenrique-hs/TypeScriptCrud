@@ -1,12 +1,6 @@
-import { Schema, model, Document } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
-
-interface UserInterface extends Document {
-  id?: string,
-  name?: string
-  email?: string,
-  password?: string
-}
+import UserInterface from '../interfaces/UserInterface'
 
 const UserSchema = new Schema({
   _id: {

@@ -1,7 +1,8 @@
 import UserModel from '../models/UserModel'
+import UserInterface from '../interfaces/UserInterface'
 
 class UserRepository {
-  public async create (userData) {
+  public async create (userData:UserInterface): Promise<UserInterface> {
     const userExists = UserModel.exists({ email: userData.email })
 
     if (userExists) {
